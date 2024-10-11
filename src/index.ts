@@ -1,13 +1,16 @@
+import {loadString}  from './loader.ts';
 
-import ms from 'ms';
-import lunchtime from './lunchtime.js';
-import millisecondsUntil from './millisecondsUntil.js';
+function main() {
+  const data = loadString(
+    `
+    2021-01-01 * "Test Transaction"
+      Expenses:Food  $10
+      Assets:Cash
+    `
+  );
 
-export default function howLongUntilLunch(hours: number, minutes: number) {
-	// lunch is at 12.30
-	if (hours === undefined) hours = 12;
-	if (minutes === undefined) minutes = 30;
-
-	var millisecondsUntilLunchTime = millisecondsUntil(lunchtime(hours, minutes));
-	return ms(millisecondsUntilLunchTime, { long: true });
+  console.log(data);
 }
+
+// Run the main function
+main();
